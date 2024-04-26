@@ -1,0 +1,61 @@
+@startuml
+package Logica {
+    interface Pantalla
+    Mostrar ..|> Pantalla
+    Dibujar ..|> Pantalla
+
+
+    class Enemigo{
+        + Estadisticas[] estadisticas 
+        - Animaciones_Enemigo()
+        - texturas_Enemigo()
+        - Sonidos_Enemigo()
+        - IA_Enemigo()
+    }
+
+    class Juego{
+        + Modos de juego
+        + Personajes
+        + Escenarios
+        - Seleccion_modo()
+        - Seleccion_Personajes()
+        - Seleccion_Escenario()
+        - Contador_Victorias/derrotas()
+    }
+
+    class Personaje{
+        + Estadisticas[] estadisticas 
+        + Combos[] combos 
+        + Habilidaes[] habilidades
+        - Animaciones()
+        - texturas()
+        - Sonidos()
+        - Combinaciones de teclas()
+    }
+
+    class Util{
+        - Optimizar_Animacion()
+        - Optimizar_Audio()
+        - Optimizar_Textura()
+    } 
+
+    class Main{
+        + Menú
+        + Inicio 
+        + Final
+        - mostrar_menu()
+        - mostrar_inicio()
+        - mostrar_final()
+    }
+}
+
+Principal -- Main
+Main o-- Juego
+Juego o-- Personaje
+Juego o-- Enemigo
+Util --* Enemigo
+Util --* Personaje
+Util --* Juego
+Pantalla --* Main
+
+@enduml

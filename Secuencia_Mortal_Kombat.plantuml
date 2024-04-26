@@ -1,0 +1,22 @@
+@startuml
+title Inicio de Juego en Mortal Kombat
+
+Main -> menu: iniciarJuego()
+menu -> juego: seleccionarModoJuego()
+juego -> SelectorModos: mostrarModosDisponibles()
+SelectorModos -> menu: modoSeleccionado()
+
+menu -> juego: seleccionarPersonaje()
+juego -> SelectorPersonaje: mostrarPersonajesDisponibles()
+SelectorPersonaje -> Personajes: seleccionarPersonaje()
+
+menu -> juego: seleccionarEscenario()
+juego -> SelectorEscenario: mostrarEscenariosDisponibles()
+SelectorEscenario -> Escenarios: seleccionarEscenario()
+
+juego -> Util: cargarConfiguraciones()
+juego -> Personajes: obtenerHabilidades()
+juego -> Escenarios: cargarMusica()
+
+juego -> Util: iniciarJuego()
+@enduml
